@@ -1,0 +1,26 @@
+# Write your default config options here!
+
+# audio 
+ao=oss
+mixer-channel=vol
+
+# info
+msgmodule=1
+msgcolor=1
+
+# subtitle
+idx=yes
+utf8=1
+subpos="100"
+subalign="2"
+subfont-text-scale=3
+ass=yes
+embeddedfonts=yes
+fixed-vo=yes
+
+# nvdia 
+#vo=vdpau,
+#vc=ffmpeg12vdpau,ffwmv3vdpau,ffvc1vdpau,ffh264vdpau,ffodivxvdpau,
+
+# don't activate screensaver 
+heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &"

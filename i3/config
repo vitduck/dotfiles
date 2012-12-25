@@ -1,0 +1,163 @@
+# i3 config 
+font -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+
+#bindsym Mod4+Return exec urxvtc
+bindsym Mod4+Return exec termite
+#bindsym Mod4+Return exec xterm
+
+# dmenu
+bindsym Mod4+d exec dmenu_run -fn -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1 -p '@' -nf '#DCDCCC' -nb '#1F1F1F' -sf "#000000" -sb  "#7F9F7F"
+  
+# moving the float container
+floating_modifier Mod4
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen
+
+# focus
+bindsym Mod4+h focus left
+bindsym Mod4+j focus down
+bindsym Mod4+k focus up
+bindsym Mod4+l focus right
+
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# move focused window
+bindsym Mod4+Shift+h move left
+bindsym Mod4+Shift+j move down
+bindsym Mod4+Shift+k move up
+bindsym Mod4+Shift+l move right
+
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# horizontal/vertical split 
+bindsym Mod1+h split h
+bindsym Mod1+v split v
+
+# change container layout (stacked, tabbed, default)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout default
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# switch to workspace
+bindsym Mod4+1 workspace 1:windows
+bindsym Mod4+2 workspace 2:mail
+bindsym Mod4+3 workspace 3:music
+bindsym Mod4+4 workspace 4:www
+bindsym Mod4+5 workspace 5:kohn
+bindsym Mod4+6 workspace 6:bloch
+bindsym Mod4+7 workspace 7:graphics
+bindsym Mod4+8 workspace 8:local
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace 1:windows
+bindsym Mod4+Shift+2 move container to workspace 2:mail
+bindsym Mod4+Shift+3 move container to workspace 3:music
+bindsym Mod4+Shift+4 move container to workspace 4:www
+bindsym Mod4+Shift+5 move container to workspace 5:kohn
+bindsym Mod4+Shift+6 move container to workspace 6:bloch
+bindsym Mod4+Shift+7 move container to workspace 7:graphics
+bindsym Mod4+Shift+8 move container to workspace 8:local
+
+# reload the configuration file
+bindsym Mod4+Shift+c reload
+bindsym Mod4+Shift+r restart
+bindsym Mod4+Shift+e exit
+bindsym Mod4+x       exec i3-exit
+
+# kill focused window
+bindsym Mod4+Shift+q kill
+
+# volumn 
+bindsym Mod4+minus exec mixer vol -5
+bindsym Mod4+plus exec mixer vol +5 
+
+# virtual machine
+bindsym Mod4+Control+x exec "VBoxSDL --startvm XP"
+
+# move workspace 
+for_window [title="ducpfp@kohn:~"] move container to workspace 5:kohn; workspace 5:kohn
+for_window [title="ducpfp@bloch:~"] move container to workspace 6:bloch; workspace 6:bloch
+for_window [class="Inkscape"] move container to workspace 7:graphics; workspace 7:graphics
+for_window [class="Gimp"] move container to workspace 7:graphics; workspace 7:graphics
+assign [class="Firefox"] 4:www
+
+# testing 
+hide_edge_borders both
+
+# resize window (you can also use the mouse for that)
+bindsym Mod4+r mode "resize"
+mode "resize" {
+	bindsym Up          resize grow   up    5 px or 5 ppt
+	bindsym Shift+Up    resize shrink up    5 px or 5 ppt
+	bindsym Down        resize grow   down  5 px or 5 ppt
+	bindsym Shift+Down  resize shrink down  5 px or 5 ppt
+	bindsym Left        resize grow   left  5 px or 5 ppt
+	bindsym Shift+Left  resize shrink left  5 px or 5 ppt
+	bindsym Right       resize grow   right 5 px or 5 ppt
+	bindsym Shift+Right resize shrink right 5 px or 5 ppt
+
+# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# volume control 
+bindym Mod4+= exec mixer vol +5
+bindym Mod4+- exec mixer vol -5 
+
+# panel 
+bar {
+	status_command i3status --config $HOME/.config/i3/i3status.conf
+	font -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+	workspace_buttons yes
+	position bottom
+	#mode hide
+	colors { 
+		background #1F1F1F
+		statusline #DCDCCC
+		separator  #FFFFFF
+		focused_workspace  #000000 #7F9F7F #000000
+		inactive_workspace #000000 #3F3F3F #DCDCCC
+	}
+}
+
+# border style 
+new_window normal
+
+# customized color
+client.background        #3F3F3F
+
+client.focused           #1F1F1F #1F1F1F #DCDCCC #9E9E9E
+client.focused_inactive  #506070 #506070 #DCDCCC #9E9E9E
+client.unfocused		 #606060 #606060 #DCDCCC #9E9E9E
+
+# Default Float
+for_window [class="XMakemol"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="MuPDF"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="GV"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="Gview.exe"] floating enable
+for_window [class="VESTA"] floating enable
+for_window [title="Gnuplot"] floating enable
+for_window [title="PyMOL Viewer"] floating enable
+for_window [title="The PyMOL Molecular Graphics System"] floating enable
+for_window [title="Add Downloads"] floating enable
