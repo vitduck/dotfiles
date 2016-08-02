@@ -1,12 +1,13 @@
 set nocompatible                       " new VIM features 
 
 if has ("gui")
-  set hlsearch                          " highlihting the last used search pattern
+    set hlsearch                          " highlihting the last used search pattern
 endif
 
 "color
 set t_Co=256                            
 set bg=dark
+
 colorscheme zenburn
 
 "general features
@@ -19,7 +20,6 @@ set bs=2                                " backspace to delete previous character
 set fo=cqrt                             " smart formatting of comments
 set incsearch                           " start searching when types
 set visualbell t_vb=
-set noerrorbells
 
 "gui mode
 set cursorline 
@@ -41,35 +41,49 @@ set mousemodel=popup                    " Turn on the popup menu
 set mousehide                           " Hide the mouse cursor when the user types
 set mouse=a
 
-"key map
 set pastetoggle=<F10>
+
 nnoremap ; :
 inoremap ;; <esc>
-
-"pathogen 
-execute pathogen#infect()
-execute pathogen#helptags()
+let mapleader = ','
 
 "syntax and menu
 filetype plugin indent on
 syntax on                               " Syntax highlighting off
-
-"indent
-let g:indentLine_enable=1
-"let g:indentLine_showFirstIndentLevel=1
-let g:indentLine_color_term = 242
-let g:indentLine_faster=1
-
-"disable conceal feature for LaTex
-let g:tex_conceal=""
 
 "fortran programming"
 let fortran_have_tabs=1
 let fortran_free_source=1
 let fortran_fixed_source=1
 
+"vim-plug 
+call plug#begin('~/.vim/plugged')
+Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic' 
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-perl/vim-perl', 
+call plug#end()
+
+"level indentation
+let g:indentLine_enable = 1
+let g:indentLine_showFirstIndentLevel = 0
+let g:indentLine_faster=1
+let g:indentLine_color_term = 245
+let g:indentLine_fileTypeExclude = ['text']
+
 "powerline 
 set laststatus=2   
-set encoding=utf-8 
-let g:Powerline_symbols = "unicode"
-let g:Powerline_colorscheme = 'zenburn'
+let g:airline_theme='base16_eighties'
+
+"synstasic 
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl']
+
+"comment
+let g:NERDSpaceDelims = 1
+
+"vim-perl 
+let perl_sub_signatures = 1
