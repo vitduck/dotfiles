@@ -1,0 +1,30 @@
+[options]
+#font = Ttyp0 10
+font = PragmataPro 9
+#font   = Dina 9
+cursor_shape = block
+cursor_blink = on
+dynamic_title = true
+audible_bell = false
+browser = firefox
+
+# zenburn
+[colors] 
+foreground = #DCDCCC
+background = #3F3F3F
+color0     = #1E2320
+color1     = #CC9393
+color2     = #60B48A
+color3     = #DFAF8F
+color4     = #506070
+color5     = #DC8CC3
+color6     = #8CD0D3
+color7     = #DCDCCC
+color8     = #EFDCBC
+color9     = #DCA3A3
+color10    = #E3CEAB
+color11    = #F0DFAF
+color12    = #94BFF3
+color13    = #EC93D3
+color14    = #93E0E3
+color15    = #C3BF9F
