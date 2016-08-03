@@ -12,8 +12,8 @@ $HOME/build/bin:\
 $PATH
 
 export LD_LIBRARY_PATH=\
-$HOME/build/lib:
-$HOME/build/src/gv/lib:
+$HOME/build/lib:\
+$HOME/build/src/gv/lib:\
 $LD_LIBRARY_PATH
 
 export PKG_CONFIG_PATH=$HOME/build/lib/pkgconfig
