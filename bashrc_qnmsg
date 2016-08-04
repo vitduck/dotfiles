@@ -1,0 +1,121 @@
+# system 
+if [ -f /etc/bashrc ]; then . /etc/bashrc; fi
+
+export XMAKEMOL_BG='#3F3F3F'
+export POTCAR=/opt/VASP/POTCAR
+export HOME_TETR=$HOME/DFT/vasp_pp
+export ISODATA=$HOME/build/isobyu/
+
+# shell option
+set -o vi
+eval "`dircolors -b $HOME/.dircolors`"
+export HISTCONTROL=ignoredups
+export HISTSIZE=12345
+export COLORFGBG='default;default'
+export PROMPT_DIRTRIM=3
+export PS1="\n\[\e[00;34m\]┌─[\[\e[01;31m\u\e[00;34m\]]─[\[\e[01;32m\]bloch\[\e[00;34m\]]─[\[\033[01;34m\]\w\[\033[00;34m\]]\[\e[01;31m\]\n\[\e[00;34m\]└──\[\e[01;31m\]>>\[\e[0m\] "
+
+# alias
+alias ls='ls -XFh --color --group-directories-first'
+alias vi='vim'
+alias rm='rm -vi'
+alias mv='mv -vi'
+alias cp='cp -vi'
+alias qs='qstat'
+alias qsu="qstat -u $USER"
+alias qsa='qstat -a'
+
+# man page 
+export MANPATH=$HOME/build/man:$MANPATH
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# plenv  
+export PLENV_ROOT=$HOME/jail/plenv
+export PATH=\
+$PLENV_ROOT/bin:\
+$PATH
+eval "$(plenv init -)"
+
+# search path 
+export PATH=\
+$HOME/build/bin:\
+$HOME/repo/CLU:\
+$HOME/repo/stable:\
+$HOME/repo/QnMSG:\
+$PATH
+
+# gausian
+export g03root=/opt/gaussian
+export GV_DIR=$HOME/build/src/gv
+. $g03root/g03/bsd/g03.profile
+
+# perl 
+export PERL5LIB=\
+$HOME/repo/CLU:\
+$HOME/repo/VASP:\
+$HOME/repo/QnMSG:\
+$PERL5LIB
+
+# python 
+export PYTHONPATH=\
+/opt/phonopy/phonopy-1.10.0/lib64/python:\
+$PYTHONPATH
+
+# link path 
+export LD_LIBRARY_PATH=\
+$HOME/build/lib:\
+$HOME/build/src/gv/lib:\
+$LD_LIBRARY_PATH
+
+function cd { 
+	if [ -z "$1" ]
+	then 
+		builtin cd 
+	else 
+		builtin cd "$1" 
+	fi
+    ls
+}
+
+function ..  { cd "../$@"; }
+function ..2 { cd "../../$@"; }
+function ..3 { cd "../../../$@"; }
+function ..4 { cd "../../../../$@"; }
+function ..5 { cd "../../../../../$@"; }
+
+# copy pwd to clipboard
+function pwd  { 
+	builtin pwd | xargs echo -n | xsel -i
+	echo "$PWD"
+}
+
+function eps2png { 
+    mv -f $1 original.eps  
+    eps2eps --ignoreBB original.eps $1 
+    rm -f original.eps
+	convert -density 300 $1 ${1%.eps}.png
+}
+
+function cclone { 
+    echo "=> Cloning input files to $1"
+    touch $1/OUTCAR 
+    cp INCAR KPOINTS POTCAR CONTCAR $1 
+    mv $1/CONTCAR $1/POSCAR 
+} 
+
+# compilation/computation
+ulimit -s unlimited
+ulimit -l unlimited
+
+export OMP_NUM_THREADS=1
+export I_MPI_COMPATIBILITY=4
+
+module add IntelCompiler/12.1.6_64bit
+module add IntelMKL/11.1.1.106_64bit
+module add IntelMPI/4.1.3.045_64bit
