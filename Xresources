@@ -9,19 +9,20 @@
 URxvt.termName:           rxvt-256color
 URxvt.loginShell:         true
 URxvt.scrollBar:          false
-URxvt.saveLines:          1000
+URxvt.saveLines:          50
 URxvt.internalBorder:     0
 
 URxvt.url-launcher:       firefox
 URxvt.matcher.button:     1
 URxvt.cutchars:           '"'()*<>[]{|}
 URxvt.cursorBlink: 		  1
-URxvt.font:				  -misc-ohsnapu-medium-r-normal--14-101-100-100-c-70-iso10646-1,\
+URxvt.font:				  -uw-ttyp0-medium-r-normal--13-120-75-75-c-70-iso10646-1,\
 			              -baekmuk-gulim-medium-r-normal--12-120-75-75-m-120-ksc5601.1987-0
 
 URxvt.geometry:           90x30
 URxvt.iso14755:           false
 urxvt*lineSpace:          -1
+URxvt.perl-ext:           default
 
 !--
 !gv
