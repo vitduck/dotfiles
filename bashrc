@@ -47,6 +47,12 @@ alias lpr='/usr/local/bin/lpr -o fit-to-page -o sides=two-sided-long-edge'
 alias gf='gfortran48 -rpath=/usr/local/lib/gcc48'
 alias torrent='aria2c --file-allocation=none'
 
+alias kohn='ssh -qY ducpfp@kohn.kaist.ac.kr'
+alias sham='ssh -qY ducpfp@sham.kaist.ac.kr'
+alias bloch='ssh -qY ducpfp@bloch.kaist.ac.kr'
+alias kohnedu='ssh -qY ducpfp@kohnedu.kaist.ac.kr'
+alias view='ssh -Y ducpfp@kohnview.kaist.ac.kr'
+
 # man 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -57,7 +63,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 export PROMPT_COMMAND='DEFTITLE="${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}"; echo -ne "\033]0;${TITLE:-$DEFTITLE}\007"'
-export PS1="\n\[\e[00;34m\]┌─[\[\e[01;31m\u\e[00;34m\]]─[\[\e[01;32m\]\h\[\e[00;34m\]]─[\[\033[01;34m\]\w\[\033[00;34m\]]\[\e[01;31m\]\n\[\e[00;34m\]└──\[\e[01;31m\]>>\[\e[0m\] "
+#export PS1="\n\[\e[00;34m\]┌[\[\e[01;31m\u\e[00;34m\]]─[\[\e[01;32m\]\h\[\e[00;34m\]]─[\[\033[01;34m\]\w\[\033[00;34m\]]\[\e[01;31m\]\n\[\e[00;34m\]└\[\e[00;34m\]>\[\e[0m\] "
+export PS1="\n\[\e[00;34m\][\[\e[01;31m\u\e[00;34m\]][\[\e[01;32m\]\h\[\e[00;34m\]][\[\033[01;34m\]\w\[\033[00;34m\]]\e[00;34m->\[\e[0m\]"
 
 function cd 
 {
