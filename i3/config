@@ -1,12 +1,10 @@
 # i3 config 
-font -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+font -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
 
-#bindsym Mod4+Return exec urxvtc
-bindsym Mod4+Return exec termite
-#bindsym Mod4+Return exec xterm
+bindsym Mod4+Return exec urxvtc
 
 # dmenu
-bindsym Mod4+d exec dmenu_run -fn -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1 -p '@' -nf '#DCDCCC' -nb '#1F1F1F' -sf "#000000" -sb  "#7F9F7F"
+bindsym Mod4+d exec dmenu_run -fn 'terminus-8:normal' -p '#' -nf '#DCDCCC' -nb '#1F1F1F' -sf "#000000" -sb  "#7F9F7F"
   
 # moving the float container
 floating_modifier Mod4
@@ -124,7 +122,7 @@ bindym Mod4+- exec mixer vol -5
 # panel 
 bar {
 	status_command i3status --config $HOME/.config/i3/i3status.conf
-	font -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+    font -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
 	workspace_buttons yes
 	position bottom
 	#mode hide
