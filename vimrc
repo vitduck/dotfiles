@@ -4,6 +4,9 @@ if has ("gui")
     set hlsearch                          " highlihting the last used search pattern
 endif
 
+set ttyfast
+set lazyredraw
+
 "color
 set t_Co=256                            
 set bg=dark
@@ -74,9 +77,13 @@ let g:indentLine_faster=1
 let g:indentLine_color_term = 245
 let g:indentLine_fileTypeExclude = ['text']
 
-"powerline 
+"airline 
 set laststatus=2   
 let g:airline_theme='base16_eighties'
+
+"NERD tree 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "synstasic 
 let g:syntastic_enable_perl_checker = 1
